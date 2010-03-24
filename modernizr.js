@@ -117,6 +117,7 @@ window.Modernizr = (function(window,doc,undefined){
     applicationcache = 'applicationCache',
     
     webWorkers = 'webworkers',
+    microdata = 'microdata',
     smil = 'smil',
     hashchange = 'hashchange',
     crosswindowmessaging = 'crosswindowmessaging',
@@ -623,6 +624,12 @@ window.Modernizr = (function(window,doc,undefined){
         var cache = window[applicationcache];
         return !!(cache && (typeof cache.status != 'undefined') && (typeof cache.update == 'function') && (typeof cache.swapCache == 'function'));
     };
+    
+    // microdata technique by Mark Pilgrim: http://diveintohtml5.org/detect.html#microdata
+    tests[microdata] = function () {
+        return !!document.getItems;
+    };
+
     
     
     // technique courtesy of Jonathan Neal
