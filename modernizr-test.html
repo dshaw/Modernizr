@@ -47,10 +47,20 @@
           return 'At ' + end + ', Modernizr ' + (status ? success_msg : failure_msg) + '.';
         },
         properties = function(library){
-          var op, props = [];
+          var inputtype, inp, property, props = [];
           for (property in library) {
             if (property.charAt(0) !== '_' && property !== 'addTest') {
-              props.push(property);
+              if (property === 'inputtypes') {
+                for(inputtype in library[property]) {
+                  props.push('inputtypes.'+inputtype);
+                }
+              } else if (property === 'input') {
+                for(inp in library[property]) {
+                  props.push('input.'+inp);
+                }
+              } else {
+                props.push(property);
+              }
             }
           }
           return props.toString().replace(/,/g,' '); 
