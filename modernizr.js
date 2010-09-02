@@ -399,14 +399,14 @@ window.Modernizr = (function(window,doc,undefined){
 
         if (bool){  
             bool = new Boolean(bool);  
-            bool.contain = function() {
+            bool.contain = !!(function() {
               set_css('background-size: contain');
               return contains(m_style['backgroundSize'], 'contain');
-            };
-            bool.cover = function() {
+            });
+            bool.cover = !!(function() {
               set_css('background-size: cover');
               return contains(m_style['backgroundSize'], 'cover');
-            };
+            });
         }
         return bool;
     };
